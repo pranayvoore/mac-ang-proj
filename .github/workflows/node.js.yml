@@ -32,6 +32,9 @@ jobs:
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.EC2_KEY }}
+    - name: Coonection Check  
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets. EC2_HOST }} "echo hello-world!"    
     - name: File Check If Exists 
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets. EC2_HOST }} "powershell.exe -Command 'New-Item -Path :/C:/path -ItemType Directory'"
