@@ -34,10 +34,10 @@ jobs:
         ssh-private-key: ${{ secrets.EC2_KEY }}
     - name: Connection Check  
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets. EC2_HOST }} "echo hello-world!"    
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo hello-world!"    
     - name: File Check If Exists 
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets. EC2_HOST }} "powershell.exe -Command 'New-Item -Path :/C:/path -ItemType Directory'"
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "powershell.exe -Command 'New-Item -Path :/C:/path -ItemType Directory'"
     - name: Copy files to EC2 
       run: |
-        scp -o StrictHostKeyChecking=no - ./dist/your-angular-app/* ${{ secrets.EC2_USER }}@${{ secrets. EC2_HOST }} :/C:/path
+        scp -o StrictHostKeyChecking=no - ./dist/your-angular-app/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} :/C:/path
